@@ -31,7 +31,7 @@ namespace luafalcao.api.Facade.Facades
             {
                 var cityEntityCreated = await this.cityService.CreateCity(this.mapper.Map<City>(city));
 
-                message.Ok(this.mapper.Map<CityDto>(cityEntityCreated));
+                message.Created(this.mapper.Map<CityDto>(cityEntityCreated));
             }
             catch(Exception exception)
             {
