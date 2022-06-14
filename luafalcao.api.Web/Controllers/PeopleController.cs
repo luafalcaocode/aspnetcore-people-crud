@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace luafalcao.api.Web.Controllers
 {
-    [Route("api/cities/{cityId}/person")]
+    [Route("api/cities/{cityId}/people")]
     [ApiController]
     public class PeopleController : ControllerBase
     {
