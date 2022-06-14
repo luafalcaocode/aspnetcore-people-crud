@@ -18,7 +18,7 @@ namespace luafalcao.api.IntegrationTests.Factories
         public static dynamic Create(FacadeTypeEnum type)
         {
             IMapper mapper = ConfigureAutoMapper();
-            BaseContext context = ConfigureSqlContext();
+            ApplicationContext context = ConfigureSqlContext();
 
             switch (type)
             {
@@ -44,7 +44,7 @@ namespace luafalcao.api.IntegrationTests.Factories
             return mapper.CreateMapper();
         }
 
-        private static BaseContext ConfigureSqlContext()
+        private static ApplicationContext ConfigureSqlContext()
         {
             var builder = new DbContextOptionsBuilder<ApplicationContext>();
 

@@ -11,7 +11,7 @@ namespace luafalcao.api.Persistence.Repositories
         private ICityRepository city { get; set; }
         private IPersonRepository person { get; set; }
 
-        private BaseContext contexto { get; set; }
+        private ApplicationContext contexto { get; set; }
 
         public ICityRepository City
         {
@@ -39,7 +39,7 @@ namespace luafalcao.api.Persistence.Repositories
             }
         }
 
-        public RepositoryManager(BaseContext contexto)
+        public RepositoryManager(ApplicationContext contexto)
         {
             this.contexto = contexto;
         }
