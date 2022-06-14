@@ -18,7 +18,7 @@ namespace luafalcao.api.Domain.Services
             this.repository = repository;
         }
 
-        public async Task CreateCity(City city)
+        public async Task<City> CreateCity(City city)
         {
             var validations = PersonCityValidationSingleton.GetInstance().ValidateCityCreationOrUpdate(city);
            
@@ -30,6 +30,8 @@ namespace luafalcao.api.Domain.Services
             this.repository.City.CreateCity(city);
 
             await this.repository.Commit();
+
+            return city;
         }
 
         public async Task DeleteCity(City city)

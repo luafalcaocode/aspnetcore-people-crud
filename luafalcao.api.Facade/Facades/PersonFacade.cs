@@ -30,6 +30,8 @@ namespace luafalcao.api.Facade.Facades
             try
             {
                 await this.personService.CreatePerson(cityId, this.mapper.Map<Person>(person));
+
+                message.Ok();
             }
             catch(Exception exception)
             {
@@ -46,6 +48,8 @@ namespace luafalcao.api.Facade.Facades
             try
             {
                 await this.personService.DeletePerson(cityId, this.mapper.Map<Person>(person));
+
+                message.Ok();
             }
             catch (Exception exception)
             {
@@ -62,6 +66,8 @@ namespace luafalcao.api.Facade.Facades
             try
             {
                 await this.personService.UpdatePerson(cityId, this.mapper.Map<Person>(person));
+
+                message.Ok();
             }
             catch (Exception exception)
             {

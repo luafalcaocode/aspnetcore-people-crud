@@ -38,7 +38,8 @@ namespace luafalcao.api.Web.Controllers
         public async Task<IActionResult> PostCity(CityCreationDto city)
         {
             var message = await this.facade.CreateCity(city);
-            return StatusCode(message.StatusCode, message);
+
+            return CreatedAtRoute("GetCityById", new { Id = message.Data.CityId }, message.Data);            
         }
 
         [HttpPut]

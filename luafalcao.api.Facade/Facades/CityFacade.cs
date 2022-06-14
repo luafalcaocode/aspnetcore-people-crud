@@ -23,13 +23,15 @@ namespace luafalcao.api.Facade.Facades
             this.mapper = mapper;
         }
 
-        public async Task<Message> CreateCity(CityCreationDto city)
+        public async Task<Message<CityDto>> CreateCity(CityCreationDto city)
         {
-            var message = new Message();
+            var message = new Message<CityDto>();
 
             try
             {
-                await this.cityService.CreateCity(this.mapper.Map<City>(city));
+                var cityEntityCreated = await this.cityService.CreateCity(this.mapper.Map<City>(city));
+
+                message.Ok(this.mapper.Map<CityDto>(cityEntityCreated));
             }
             catch(Exception exception)
             {
@@ -47,6 +49,8 @@ namespace luafalcao.api.Facade.Facades
             try
             {
                 await this.cityService.DeleteCity(this.mapper.Map<City>(city));
+                
+                message.Ok();
             }
             catch (Exception exception)
             {
@@ -63,6 +67,8 @@ namespace luafalcao.api.Facade.Facades
             try
             {
                 await this.cityService.UpdateCity(this.mapper.Map<City>(city));
+
+                message.Ok();
             }
             catch (Exception exception)
             {

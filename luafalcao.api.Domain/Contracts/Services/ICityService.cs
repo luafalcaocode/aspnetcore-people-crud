@@ -10,7 +10,7 @@ namespace luafalcao.api.Domain.Contracts.Services
     {
         Task<IEnumerable<City>> GetAllCities();
         Task<City> GetCity(int cityId);
-        Task CreateCity(City city);
+        Task<City> CreateCity(City city);
         Task UpdateCity(City city);
         Task DeleteCity(City city);
     }

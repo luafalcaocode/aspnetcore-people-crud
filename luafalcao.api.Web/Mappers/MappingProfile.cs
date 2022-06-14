@@ -10,8 +10,27 @@ namespace luafalcao.api.Web.Mappers
     {
         public MappingProfile()
         {
+            MapCity();
+            MapPerson();
+
             CreateMap(typeof(Message<>), typeof(Message<>));
             CreateMap(typeof(Expression<>), typeof(Expression<>));
         }    
+
+        public void MapCity()
+        {
+            CreateMap<CityCreationDto, City>();
+            CreateMap<CityDto, City>();
+
+            CreateMap<City, CityDto>();
+        }
+
+        public void MapPerson()
+        {
+            CreateMap<PersonCreationDto, Person>();
+            CreateMap<PersonDto, Person>();
+
+            CreateMap<Person, PersonDto>();
+        }
     }
 }
