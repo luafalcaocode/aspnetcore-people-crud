@@ -1,0 +1,22 @@
+﻿################################################################################
+# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
+################################################################################
+
+/.vscode
+/luafalcao.api.Domain/bin/Debug/netcoreapp3.1
+/luafalcao.api.Domain/obj
+/luafalcao.api.Facade/bin/Debug/netcoreapp3.1
+/luafalcao.api.Facade/obj
+/luafalcao.api.IntegrationTests/bin/Debug/netcoreapp3.1
+/luafalcao.api.IntegrationTests/obj
+/luafalcao.api.Persistence/bin/Debug/netcoreapp3.1
+/luafalcao.api.Shared/bin/Debug/netcoreapp3.1
+/luafalcao.api.Shared/obj
+/luafalcao.api.Web/bin
+/luafalcao.api.Web/obj
+/luafalcao.api.Persistence/obj
+/.vs/luafalcao_api
+/luafalcao.api.Domain/bin/Release/netcoreapp3.1
+/luafalcao.api.Facade/bin/Release/netcoreapp3.1
+/luafalcao.api.Persistence/bin/Release/netcoreapp3.1
+/luafalcao.api.Shared/bin/Release/netcoreapp3.1

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Enums\**" />
+    <EmbeddedResource Remove="Enums\**" />
+    <None Remove="Enums\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\luafalcao.api.Domain\luafalcao.api.Domain.csproj" />
+    <ProjectReference Include="..\luafalcao.api.Shared\luafalcao.api.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
