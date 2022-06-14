@@ -33,9 +33,12 @@ namespace luafalcao.api.Facade.Facades
 
                 message.Created(this.mapper.Map<CityDto>(cityEntityCreated));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
@@ -54,7 +57,10 @@ namespace luafalcao.api.Facade.Facades
             }
             catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
@@ -72,7 +78,10 @@ namespace luafalcao.api.Facade.Facades
             }
             catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
@@ -89,6 +98,7 @@ namespace luafalcao.api.Facade.Facades
                 if (!cities.Any())
                 {
                     message.NotFound();
+                    return message;
                 }
 
                 message.Ok(cities);
@@ -112,6 +122,7 @@ namespace luafalcao.api.Facade.Facades
                 if (city == null)
                 {
                     message.NotFound();
+                    return message;
                 }
 
                 message.Ok(city);

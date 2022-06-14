@@ -11,11 +11,11 @@ namespace luafalcao.api.Web.Controllers
 {
     [Route("api/cities/{cityId}/person")]
     [ApiController]
-    public class PersonsController : ControllerBase
+    public class PeopleController : ControllerBase
     {
         private IPersonFacade facade;
 
-        public PersonsController(IPersonFacade facade)
+        public PeopleController(IPersonFacade facade)
         {
             this.facade = facade;
         }
@@ -38,7 +38,8 @@ namespace luafalcao.api.Web.Controllers
         public async Task<IActionResult> PostPerson(int cityId, PersonCreationDto person)
         {
             var message = await this.facade.CreatePerson(cityId, person);
-            return StatusCode(message.StatusCode, message);
+
+            return CreatedAtRoute("GetPersonById", new { CityId = cityId, Id = message.Data.PersonId }, message.Data);
         }
 
         [HttpPut]

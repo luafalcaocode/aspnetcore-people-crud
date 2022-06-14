@@ -28,12 +28,12 @@ namespace luafalcao.api.Domain.Singletons
 
             if (person == null)
             {
-                validations.Add("Person object sent by the client cannot be null");
+                validations.Add("O objeto Pessoa não pode ser enviado como nulo.");
             }           
 
             if (city == null)
             {
-               validations.Add("The city does not exist on the database.");
+               validations.Add("A cidade com o id informado não existe no banco de dados.");
             }
 
             return validations;
@@ -45,7 +45,7 @@ namespace luafalcao.api.Domain.Singletons
 
             if (city == null)
             {
-                validations.Add("The city does not exist on the database. Where this user lives? Is he alive? o.O");
+                validations.Add("A cidade com o id informado não existe no banco de dados.");
             }
 
             return validations;

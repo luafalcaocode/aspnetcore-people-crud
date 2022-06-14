@@ -5,7 +5,6 @@ using luafalcao.api.Persistence.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace luafalcao.api.Domain.Services
@@ -19,15 +18,22 @@ namespace luafalcao.api.Domain.Services
             this.repository = repository;
         }
 
-        public async Task CreatePerson(int cityId, Person person)
+        public async Task<Person> CreatePerson(int cityId, Person person)
         {
             var city = await this.repository.City.GetCity(cityId);
 
-            PersonCityValidationSingleton.GetInstance().PersonAndCityExists(person, city);
+            var validations = PersonCityValidationSingleton.GetInstance().PersonAndCityExists(person, city);
+
+            if (validations.Any())
+            {
+                throw new Exception(string.Join(" ", validations));
+            }
 
             this.repository.Person.CreatePersonForCity(cityId, person);
            
             await this.repository.Commit();
+
+            return person;
         }
 
         public async Task DeletePerson(int cityId, Person person)
@@ -38,7 +44,7 @@ namespace luafalcao.api.Domain.Services
 
             if (validations.Any())
             {
-                throw new Exception(validations.ToString());
+                throw new Exception(string.Join(" ", validations));
             }
 
             this.repository.Person.DeletePersonForCity(cityId, person);
@@ -54,7 +60,7 @@ namespace luafalcao.api.Domain.Services
 
             if (validations.Any())
             {
-                throw new Exception(validations.ToString());                
+                throw new Exception(string.Join(" ", validations));
             }
 
             this.repository.Person.UpdatePersonForCity(cityId, person);
@@ -70,7 +76,7 @@ namespace luafalcao.api.Domain.Services
 
             if (validations.Any())
             {
-                throw new Exception(validations.ToString());                
+                throw new Exception(string.Join(" ", validations));                
             }
 
             return await this.repository.Person.GetPeople(cityId);
@@ -84,7 +90,7 @@ namespace luafalcao.api.Domain.Services
 
             if (validations.Any())
             {
-                throw new Exception(validations.ToString());
+                throw new Exception(string.Join(" ", validations));
             }
 
             return await this.repository.Person.GetPerson(cityId, personId);

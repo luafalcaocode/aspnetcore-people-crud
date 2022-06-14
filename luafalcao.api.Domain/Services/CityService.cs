@@ -21,10 +21,10 @@ namespace luafalcao.api.Domain.Services
         public async Task<City> CreateCity(City city)
         {
             var validations = PersonCityValidationSingleton.GetInstance().ValidateCityCreationOrUpdate(city);
-           
+
             if (validations.Any())
             {
-                throw new Exception(validations.ToString());
+                throw new Exception(string.Join(" ", validations));
             }
 
             this.repository.City.CreateCity(city);
@@ -40,7 +40,7 @@ namespace luafalcao.api.Domain.Services
 
             if (validations.Any())
             {
-                throw new Exception(validations.ToString());
+                throw new Exception(string.Join(" ", validations));
             }
 
             this.repository.City.DeleteCity(city);
@@ -54,7 +54,7 @@ namespace luafalcao.api.Domain.Services
 
             if (validations.Any())
             {
-                throw new Exception(validations.ToString());
+                throw new Exception(string.Join(" ", validations));
             }
 
             this.repository.City.UpdateCity(city);

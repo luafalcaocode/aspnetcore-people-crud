@@ -8,7 +8,7 @@ namespace luafalcao.api.Domain.Contracts.Services
     {
         Task<IEnumerable<Person>> GetAllPeople(int cityId);
         Task<Person> GetPersonById(int cityId, int personId);
-        Task CreatePerson(int cityId, Person person);
+        Task<Person> CreatePerson(int cityId, Person person);
         Task UpdatePerson(int cityId, Person person);
         Task DeletePerson(int cityId, Person person);
     }

@@ -11,7 +11,7 @@ namespace luafalcao.api.Facade.Contracts
     {
         Task<Message<IEnumerable<PersonDto>>> GetAllPeople(int cityId);
         Task<Message<PersonDto>> GetPersonById(int cityId, int personId);
-        Task<Message> CreatePerson(int cityId, PersonCreationDto person);
+        Task<Message<PersonDto>> CreatePerson(int cityId, PersonCreationDto person);
         Task<Message> UpdatePerson(int cityId, PersonDto person);
         Task<Message> DeletePersonForCity(int cityId, PersonDto person);
     }

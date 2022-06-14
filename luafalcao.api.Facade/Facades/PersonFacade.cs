@@ -7,7 +7,6 @@ using luafalcao.api.Shared.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace luafalcao.api.Facade.Facades
@@ -23,19 +22,22 @@ namespace luafalcao.api.Facade.Facades
             this.mapper = mapper;
         }
 
-        public async Task<Message> CreatePerson(int cityId, PersonCreationDto person)
+        public async Task<Message<PersonDto>> CreatePerson(int cityId, PersonCreationDto person)
         {
-            var message = new Message();
+            var message = new Message<PersonDto>();
 
             try
             {
-                await this.personService.CreatePerson(cityId, this.mapper.Map<Person>(person));
+                var personEntityCreated = await this.personService.CreatePerson(cityId, this.mapper.Map<Person>(person));
 
-                message.Ok();
+                message.Created(this.mapper.Map<PersonDto>(personEntityCreated));
             }
-            catch(Exception exception)
+            catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
@@ -53,7 +55,10 @@ namespace luafalcao.api.Facade.Facades
             }
             catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
@@ -71,7 +76,10 @@ namespace luafalcao.api.Facade.Facades
             }
             catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
@@ -87,13 +95,17 @@ namespace luafalcao.api.Facade.Facades
                 if (!people.Any())
                 {
                     message.NotFound();
+                    return message;
                 }
 
                 message.Ok(people);
             }
             catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
@@ -109,13 +121,17 @@ namespace luafalcao.api.Facade.Facades
                 if (people == null)
                 {
                     message.NotFound();
+                    return message;
                 }
 
                 message.Ok(people);
             }
             catch (Exception exception)
             {
-                message.Error(exception);
+                if (exception.InnerException == null)
+                    message.BadRequest(exception.Message.Split(""));
+                else
+                    message.Error(exception);
             }
 
             return message;
