@@ -21,7 +21,7 @@ namespace luafalcao.api.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllPeople(int cityId)
+        public async Task<IActionResult> GetAll(int cityId)
         {
             var message = await this.facade.GetAllPeople(cityId);
             return StatusCode(message.StatusCode, message);
@@ -42,7 +42,7 @@ namespace luafalcao.api.Web.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdatePerson(int cityId, PersonDto person)
+        public async Task<IActionResult> PutPerson(int cityId, PersonDto person)
         {
             var message = await this.facade.UpdatePerson(cityId, person);
             return StatusCode(message.StatusCode, message);
