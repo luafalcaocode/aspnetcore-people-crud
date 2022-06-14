@@ -17,7 +17,7 @@ namespace luafalcao.api.Facade.Facades
         private IPersonService personService;
         private IMapper mapper;
 
-        PersonFacade(IPersonService personService, IMapper mapper)
+        public PersonFacade(IPersonService personService, IMapper mapper)
         {
             this.personService = personService;
             this.mapper = mapper;

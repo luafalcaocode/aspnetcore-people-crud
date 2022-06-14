@@ -46,7 +46,7 @@ namespace luafalcao.api.Web.Extensions
         {
             services.AddSwaggerGen(s =>
             {
-                s.SwaggerDoc("v1", new OpenApiInfo { Title = "ASP .NET Core Template API", Version = "v1" });
+                s.SwaggerDoc("v1", new OpenApiInfo { Title = "ASP .NET Core API - Processo Seletivo Stefanini", Version = "v1" });
             });
         }
 
@@ -62,7 +62,7 @@ namespace luafalcao.api.Web.Extensions
 
         public static void ConfigureFacades(this IServiceCollection services)
         {
-            services.AddScoped<ICityFacade, ICityFacade>();
+            services.AddScoped<ICityFacade, CityFacade>();
             services.AddScoped<IPersonFacade, PersonFacade>();
         }
 

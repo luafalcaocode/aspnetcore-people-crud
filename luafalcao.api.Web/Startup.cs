@@ -76,7 +76,7 @@ namespace luafalcao.api.Web
             app.UseSwagger();
             app.UseSwaggerUI(s =>
             {
-                s.SwaggerEndpoint("/swagger/v1/swagger.json", "luafalcao SOFTWARE");
+                s.SwaggerEndpoint("/swagger/v1/swagger.json", "Default");
             });
 
             app.UseEndpoints(endpoints =>

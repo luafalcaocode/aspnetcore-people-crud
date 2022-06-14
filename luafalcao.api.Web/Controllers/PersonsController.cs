@@ -15,7 +15,7 @@ namespace luafalcao.api.Web.Controllers
     {
         private IPersonFacade facade;
 
-        private PersonsController(IPersonFacade facade)
+        public PersonsController(IPersonFacade facade)
         {
             this.facade = facade;
         }
