@@ -2,9 +2,6 @@
 
 Projeto criado para o processo seletivo da Stefanini contendo uma Web API construída com ASP .NET Core 3.1, com uso de padrões de projetos e uma arquitetura N-tier. 
 
-Sobre a relação entre as entidades **Cidade** e **Pessoa**, tratei **Cidade** como uma entidade principal e **Pessoa** como uma entidade filha, de forma que para uma pessoa existir é necessário haver uma cidade cadastrada (nesse contexto, toda pessoa viveria em uma cidade, mas em outro contexto poderia funcionar de uma maneira diferente). Fazendo isso consegui explorar mais o design de rotas da entidade filha.
-
-
 ## Documentação da API:
 
 https://localhost:44332/swagger/index.html
