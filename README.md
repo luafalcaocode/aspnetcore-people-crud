@@ -1,6 +1,5 @@
 # aspnetcore-people-crud
-
-Projeto criado para o processo seletivo da Stefanini contendo uma Web API construída com ASP .NET Core 3.1, com uso de padrões de projetos e uma arquitetura N-tier. 
+Projeto contendo uma Web API construída com ASP .NET Core 3.1, com uso de padrões de projetos e uma arquitetura N-tier. 
 
 ## Documentação da API:
 
